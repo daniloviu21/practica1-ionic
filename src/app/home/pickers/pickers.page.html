@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>pickers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-picker>
+    <ion-picker-column value="Java">
+      <ion-picker-column-option value="" disabled="true">--</ion-picker-column-option>
+      <ion-picker-column-option value="java">Java</ion-picker-column-option>
+      <ion-picker-column-option value="javascript">Javascript</ion-picker-column-option>
+      <ion-picker-column-option value="c+">C+</ion-picker-column-option>
+      <ion-picker-column-option value="php">PHP</ion-picker-column-option>
+    </ion-picker-column>
+  </ion-picker>
+</ion-content>
