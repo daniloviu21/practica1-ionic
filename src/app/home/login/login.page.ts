@@ -24,7 +24,8 @@ export class LoginPage implements OnInit {
   login(){
     if (this.user === "daniel" && this.email === "utcv@edu.com" && this.password === "utcv2025") {
       this.navController.navigateRoot('/inicio');
-    } else {
+    }
+    else {
       this.presentToast();
     }
   }

@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'checkboxs',
     loadChildren: () => import('./home/checkboxs/checkboxs.module').then( m => m.CheckboxsPageModule)
   },
+  {
+    path: 'register',
+    loadChildren: () => import('./home/register/register.module').then( m => m.RegisterPageModule)
+  }
 ];
 
 @NgModule({
