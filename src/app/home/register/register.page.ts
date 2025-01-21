@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -10,6 +11,8 @@ import { NavController, ToastController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
   name: string = '';
+  appaterno: string = '';
+  apmaterno: string = '';
   user: string = '';
   email: string = '';
   telephone: string = '';
@@ -25,27 +28,19 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  register(){
-    if (this.name == '' || this.user == '' || this.email == '' || this.telephone == '' || this.address == '' || this.password == '' || this.passworddupe == '') {    
-      this.presentToast();
-    }
-    else if (this.password != this.passworddupe) {
-      this.passwordToast();
-    }
-    else {
-      this.navController.navigateForward('/inicio');
-    }
-  }
+  register(form: NgForm){
+    console.log('form: ', form);
+    console.log(form.value);
+    console.log(form.valid);
+    console.log(form.invalid);
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Datos incompletos',
-      duration: 3000,
-      position: 'bottom',
-      color: 'warning',
-    });
-
-    await toast.present();
+    if (form.valid) {
+      if (this.password === this.passworddupe) {
+        this.navController.navigateBack('/login');
+      } else {
+        this.passwordToast();
+      }      
+    }
   }
 
   async passwordToast() {
