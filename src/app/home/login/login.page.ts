@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -21,18 +22,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-    if (this.user === "daniel" && this.email === "utcv@edu.com" && this.password === "utcv2025") {
-      this.navController.navigateRoot('/inicio');
-    }
-    else {
-      this.presentToast();
+  login(form: NgForm){
+    if (form.valid) {
+      if (this.user === 'admin' && this.password === 'admin123') {
+        this.navController.navigateBack('/inicio');
+      } else {
+        this.passwordToast();
+      }
     }
   }
 
-  async presentToast() {
+  async passwordToast() {
     const toast = await this.toastController.create({
-      message: 'Las credenciales de acceso son incorrectas',
+      message: 'Credenciales incorrectas',
       duration: 3000,
       position: 'bottom',
       color: 'warning',
